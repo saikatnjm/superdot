@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SuperDot
+Comment=Emoji for Linux (Super+.)
+Exec=superdot --daemon
+Icon=io.github.superdot.SuperDot
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

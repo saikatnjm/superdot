@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SuperDot
+GenericName=Emoji picker
+Comment=Emoji for Linux: press Super+. to pick an emoji, kaomoji or symbol
+Exec=superdot --show
+Icon=io.github.superdot.SuperDot
+Categories=Utility;
+Keywords=emoji;kaomoji;symbols;picker;smiley;win+.;
+StartupNotify=false

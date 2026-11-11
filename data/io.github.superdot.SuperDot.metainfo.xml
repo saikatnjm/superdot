@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.superdot.SuperDot</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>SuperDot</name>
+  <summary>Emoji for Linux: the Win+. emoji panel</summary>
+  <developer id="io.github.saikatnjm">
+    <name>saikatnjm</name>
+  </developer>
+  <description>
+    <p>
+      SuperDot brings the Windows emoji panel (Win+.) to Linux. Press Super+. in any app,
+      type to search, and pick an emoji, kaomoji or symbol: it is typed where you were writing.
+    </p>
+    <ul>
+      <li>All the latest emoji your fonts can draw, with skin tones</li>
+      <li>Kaomoji ¯\_(ツ)_/¯ and symbols (arrows, currency, math, accented letters, Greek…)</li>
+      <li>Search by name or keyword, recently used first</li>
+      <li>Your clipboard is put back afterwards, and the emoji stays out of clipboard history</li>
+      <li>GNOME, KDE Plasma, Cinnamon, MATE, Xfce and Budgie, on Wayland and X11</li>
+      <li>A small C program, no network access</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Emoji, with recently used first</caption>
+      <image>https://raw.githubusercontent.com/saikatnjm/superdot/main/docs/screenshot-dark.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Search finds emoji, kaomoji and symbols</caption>
+      <image>https://raw.githubusercontent.com/saikatnjm/superdot/main/docs/screenshot-search.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Light theme</caption>
+      <image>https://raw.githubusercontent.com/saikatnjm/superdot/main/docs/screenshot-light.png</image>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">io.github.superdot.SuperDot.desktop</launchable>
+  <url type="homepage">https://github.com/saikatnjm/superdot</url>
+  <url type="bugtracker">https://github.com/saikatnjm/superdot/issues</url>
+  <provides>
+    <binary>superdot</binary>
+  </provides>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <keywords>
+    <keyword>emoji</keyword>
+    <keyword>kaomoji</keyword>
+    <keyword>symbols</keyword>
+    <keyword>picker</keyword>
+  </keywords>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-11-11">
+      <description><p>First release: emoji, kaomoji and symbols with search, skin tones and recently used.</p></description>
+    </release>
+  </releases>
+</component>

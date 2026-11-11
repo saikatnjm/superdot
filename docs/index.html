@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuperDot – Emoji for Linux | The Win+. emoji picker for Ubuntu, Mint, Fedora, Arch</title>
+<meta name="description" content="Missing the Windows emoji panel (Win+.) on Linux? SuperDot is a free, open-source emoji picker for Ubuntu, Linux Mint, Debian, Fedora, Arch and more. Press Super+. in any app, search, and the emoji is typed where you were writing.">
+<meta name="keywords" content="emoji picker linux, win+. linux, windows emoji panel for linux, emoji keyboard ubuntu, emoji picker wayland, emoji picker gnome, emoji picker linux mint, emoji picker fedora, emoji picker arch linux, kaomoji linux, symbols picker linux, super+.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#2563eb">
+<link rel="canonical" href="https://saikatnjm.github.io/superdot/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SuperDot">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://saikatnjm.github.io/superdot/">
+<meta property="og:title" content="SuperDot – Emoji for Linux">
+<meta property="og:description" content="Press Super+. in any app and pick an emoji, kaomoji or symbol, like Win+. on Windows. Ubuntu, Mint, Fedora, Arch and more. Free and open source.">
+<meta property="og:image" content="https://saikatnjm.github.io/superdot/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SuperDot emoji panel on Linux, opened with Super+.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SuperDot – Emoji for Linux">
+<meta name="twitter:description" content="The Windows emoji panel (Win+.) for Linux: emoji, kaomoji and symbols in any app. Free and open source.">
+<meta name="twitter:image" content="https://saikatnjm.github.io/superdot/og-image.png">
+
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "SuperDot",
+      "alternateName": ["SuperDot emoji picker", "Windows emoji panel for Linux", "Win+. for Linux"],
+      "description": "The Windows emoji panel (Win+.) for Linux: press Super+. in any app, search, and pick an emoji, kaomoji or symbol. It is typed where you were writing.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Linux: Ubuntu 22.04+, Linux Mint 21+, Debian 12+, Fedora, Arch, Manjaro, openSUSE (GNOME, KDE Plasma, Cinnamon, MATE, Xfce; Wayland and X11)",
+      "softwareVersion": "1.0.0",
+      "license": "https://opensource.org/licenses/MIT",
+      "url": "https://saikatnjm.github.io/superdot/",
+      "downloadUrl": "https://github.com/saikatnjm/superdot/releases/latest/download/superdot_amd64.deb",
+      "screenshot": "https://saikatnjm.github.io/superdot/screenshot-dark.png",
+      "image": "https://saikatnjm.github.io/superdot/og-image.png",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": [
+        "Emoji panel on Super+., like Win+. on Windows",
+        "Emoji (Unicode 18.0) with skin tones, kaomoji and symbols",
+        "Typed into the app you were using; your clipboard is put back",
+        "Search emoji, kaomoji and symbols at once",
+        "Pick several in a row without the panel closing",
+        "Six colour palettes and a glass look",
+        "Custom keyboard shortcut",
+        "Works on Wayland and X11"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How do I get the Windows emoji panel (Win+.) on Ubuntu?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Install SuperDot from its .deb file, then log out and back in once (or open SuperDot from your app menu). From then on, press Super+. in any app, type to search, and click an emoji: it is typed where you were writing." } },
+        { "@type": "Question", "name": "Does SuperDot work on Wayland?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. GNOME's Wayland session on Ubuntu and Fedora is supported, including typing emoji into native Wayland apps." } },
+        { "@type": "Question", "name": "Does picking an emoji overwrite my clipboard?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. SuperDot remembers what you had copied, uses the clipboard for a moment to type the emoji, then puts your content back. The emoji is also kept out of clipboard history tools." } },
+        { "@type": "Question", "name": "Some emoji are missing. Why?",
+          "acceptedAnswer": { "@type": "Answer", "text": "SuperDot only shows emoji your installed emoji font can draw, so you never see empty boxes. Update the Noto Color Emoji font to get newer emoji." } },
+        { "@type": "Question", "name": "Can I use a different shortcut than Super+.?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Open the panel, click the gear icon, click Shortcut and press a combination that uses Super or Ctrl+Alt." } },
+        { "@type": "Question", "name": "Does SuperDot use the internet?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The emoji list is built into the program. SuperDot never connects to the internet." } },
+        { "@type": "Question", "name": "How do I uninstall SuperDot?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Run sudo apt remove superdot, sudo dnf remove superdot or sudo pacman -R superdot. If you used install.sh, run ~/.local/lib/superdot/uninstall.sh. Your desktop shortcuts are put back." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --sans: system-ui, -apple-system, "Segoe UI", Ubuntu, Cantarell, "Noto Sans", Roboto, sans-serif;
+    --mono: ui-monospace, "Ubuntu Mono", "DejaVu Sans Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    --emoji: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Twemoji Mozilla", sans-serif;
+    --accent: #7cb4ff; --strong: #2563eb;
+    --bg: #090c13; --ink: #e8edf7; --muted: #9aa6bd; --dim: #6b7790;
+    --glass: rgba(24, 30, 44, .58); --glass-2: rgba(255, 255, 255, .06);
+    --edge: rgba(255, 255, 255, .14); --sheen: rgba(255, 255, 255, .20);
+    --shadow: 0 24px 70px rgba(0, 0, 0, .45); --orb: .34;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --accent: var(--strong);
+      --bg: #eef2f9; --ink: #131a2a; --muted: #55607a; --dim: #7b8598;
+      --glass: rgba(255, 255, 255, .62); --glass-2: rgba(255, 255, 255, .55);
+      --edge: rgba(255, 255, 255, .85); --sheen: rgba(255, 255, 255, .95);
+      --shadow: 0 24px 60px rgba(30, 50, 100, .16); --orb: .26;
+    }
+  }
+  :root[data-theme="light"] {
+    --accent: var(--strong);
+    --bg: #eef2f9; --ink: #131a2a; --muted: #55607a; --dim: #7b8598;
+    --glass: rgba(255, 255, 255, .62); --glass-2: rgba(255, 255, 255, .55);
+    --edge: rgba(255, 255, 255, .85); --sheen: rgba(255, 255, 255, .95);
+    --shadow: 0 24px 60px rgba(30, 50, 100, .16); --orb: .26;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans);
+         -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -0.025em; }
+  code, pre, kbd { font-family: var(--mono); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; position: relative; }
+  .skip { position: absolute; left: -999px; } .skip:focus { left: 16px; top: 12px; z-index: 99; background: var(--bg); padding: 8px 12px; border-radius: 8px; }
+
+  /* the backdrop the glass sits on: soft colour orbs in the chosen palette */
+  .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .sky i { position: absolute; border-radius: 50%; filter: blur(70px); opacity: var(--orb); }
+  .sky i:nth-child(1) { width: 560px; height: 560px; left: -140px; top: -120px; background: var(--strong); }
+  .sky i:nth-child(2) { width: 460px; height: 460px; right: -100px; top: 180px; background: var(--accent); }
+  .sky i:nth-child(3) { width: 520px; height: 520px; left: 30%; top: 760px; background: #f5b83d; opacity: calc(var(--orb) * .45); }
+  .sky i:nth-child(4) { width: 500px; height: 500px; right: 8%; top: 1500px; background: var(--strong); }
+
+  .glass { background: var(--glass); border: 1px solid var(--edge); border-radius: 22px;
+           -webkit-backdrop-filter: blur(22px) saturate(1.5); backdrop-filter: blur(22px) saturate(1.5);
+           box-shadow: inset 0 1px var(--sheen), var(--shadow); }
+
+  /* floating pill instead of a full-width bar */
+  header.nav { position: sticky; top: 14px; z-index: 20; margin: 14px auto 0; width: max-content; max-width: calc(100% - 24px); }
+  header.nav .glass { display: flex; align-items: center; gap: 4px; padding: 7px 8px 7px 14px; border-radius: 999px; }
+  .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 16px; color: var(--ink); margin-right: 10px; }
+  .brand:hover { text-decoration: none; }
+  .brand img { width: 26px; height: 26px; }
+  header.nav a.l { color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 11px; border-radius: 999px; }
+  header.nav a.l:hover { color: var(--ink); background: var(--glass-2); text-decoration: none; }
+  .round { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--edge); background: var(--glass-2); color: var(--ink); cursor: pointer; font-size: 15px; }
+  .round:hover { border-color: var(--accent); }
+
+  .hero { text-align: center; padding: 74px 0 34px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+          color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); }
+  h1 { font-size: clamp(40px, 7vw, 76px); margin: 22px auto 0; max-width: 13ch; }
+  h1 .keys { white-space: nowrap; }
+  h1 kbd { display: inline-block; font: 700 .62em var(--mono); padding: .12em .42em; border-radius: .3em; vertical-align: .12em; margin: 0 .04em;
+           color: #fff; background: linear-gradient(180deg, var(--accent), var(--strong)); box-shadow: 0 .09em 0 color-mix(in srgb, var(--strong) 60%, #000), 0 0 34px color-mix(in srgb, var(--accent) 45%, transparent); }
+  .lead { font-size: 19px; color: var(--muted); max-width: 620px; margin: 22px auto 30px; }
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 650; font-size: 15px; border: 1px solid transparent; cursor: pointer; }
+  .btn:hover { text-decoration: none; }
+  .btn.primary { color: #fff; background: linear-gradient(180deg, color-mix(in srgb, var(--strong) 80%, #fff), var(--strong)); box-shadow: inset 0 1px rgba(255,255,255,.35), 0 10px 30px color-mix(in srgb, var(--strong) 45%, transparent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.ghost { color: var(--ink); background: var(--glass-2); border-color: var(--edge); }
+  .btn.ghost:hover { border-color: var(--accent); }
+  .meta { margin-top: 16px; color: var(--dim); font-size: 13.5px; }
+
+  /* ---- live demo */
+  .stage { display: grid; grid-template-columns: 1fr 400px; gap: 26px; align-items: stretch; margin-top: 46px; text-align: left; }
+  .compose { padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+  .compose .who { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+  .compose .who b { color: var(--ink); }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font: 20px var(--emoji); background: var(--glass-2); border: 1px solid var(--edge); }
+  .bubble { align-self: flex-start; max-width: 85%; padding: 10px 14px; border-radius: 16px 16px 16px 4px; background: var(--glass-2); border: 1px solid var(--edge); font-size: 15px; }
+  .field { margin-top: auto; min-height: 92px; padding: 14px 16px; border-radius: 16px; border: 1.5px solid color-mix(in srgb, var(--accent) 60%, transparent);
+           background: var(--glass-2); font-size: 18px; line-height: 1.55; word-break: break-word; }
+  .field .e { font-family: var(--emoji); }
+  .caret { display: inline-block; width: 2px; height: 1.15em; background: var(--accent); vertical-align: -0.2em; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .under { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 13.5px; }
+  .dots { display: flex; gap: 8px; align-items: center; }
+  .dots button { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; outline-offset: 2px; }
+  .dots button[aria-pressed="true"] { border-color: var(--ink); }
+  .linkbtn { background: none; border: none; color: var(--accent); font: inherit; cursor: pointer; padding: 0; }
+
+  .picker { padding: 12px 12px 8px; display: flex; flex-direction: column; gap: 9px; height: 470px; }
+  .tabs { display: flex; gap: 2px; align-items: center; }
+  .tabs button { background: none; border: none; color: var(--muted); font: 700 15px var(--sans); padding: 5px 11px; border-radius: 8px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, transparent); }
+  .tabs span { margin-left: auto; font: 18px var(--emoji); padding-right: 6px; }
+  .search { width: 100%; height: 36px; border-radius: 12px; border: 1px solid var(--edge); background: var(--glass-2); color: var(--ink);
+            font: 15px var(--sans); padding: 0 12px; outline: none; }
+  .search:focus { border-color: var(--accent); }
+  .search::placeholder { color: var(--dim); }
+  .grid-box { flex: 1; overflow-y: auto; scrollbar-width: thin; }
+  .sec { font: 700 12px var(--sans); color: var(--muted); padding: 8px 8px 4px; }
+  .cells { display: grid; grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); }
+  .cells.wide { grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); }
+  .cells button { height: 42px; border: 1.5px solid transparent; background: none; border-radius: 9px; cursor: pointer; color: var(--ink);
+                  font: 24px/1 var(--emoji); padding: 0; }
+  .cells.wide button { font: 13.5px var(--sans); height: 38px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 0 6px; }
+  .cells.sym button { font: 20px var(--sans); }
+  .cells button:hover, .cells button:focus-visible { background: color-mix(in srgb, var(--accent) 14%, transparent); outline: none; }
+  .cells button.sel { background: color-mix(in srgb, var(--accent) 22%, transparent); border-color: var(--accent); }
+  .none { color: var(--muted); text-align: center; padding: 34px 0; font-size: 14px; }
+  .status { border-top: 1px solid var(--edge); padding: 7px 6px 2px; color: var(--muted); font-size: 14px; min-height: 34px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .status .e { font-family: var(--emoji); margin-right: 8px; }
+
+  /* ---- numbers */
+  .facts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 44px 0 0; padding: 0; list-style: none; }
+  .facts li { padding: 9px 16px; border-radius: 999px; font-size: 14.5px; color: var(--muted); background: var(--glass-2); border: 1px solid var(--edge); }
+  .facts b { color: var(--ink); }
+
+  section { padding: 84px 0 0; }
+  .eyebrow { font: 700 13px var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin: 0 0 10px; }
+  h2 { font-size: clamp(30px, 4.4vw, 44px); }
+  .sub { color: var(--muted); font-size: 17px; max-width: 640px; margin: 14px 0 34px; }
+
+  /* ---- bento */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .tile { padding: 24px; grid-column: span 2; display: flex; flex-direction: column; gap: 8px; overflow: hidden; position: relative; }
+  .tile.w3 { grid-column: span 3; } .tile.w4 { grid-column: span 4; }
+  .tile .big { font: 34px/1 var(--emoji); margin-bottom: 6px; }
+  .tile h3 { font-size: 19px; }
+  .tile p { margin: 0; color: var(--muted); font-size: 15px; }
+  .tile.shot { flex-direction: row; align-items: center; gap: 22px; padding-bottom: 0; }
+  .tile.shot img { width: 250px; height: auto; align-self: flex-end; margin-bottom: -70px; filter: drop-shadow(0 16px 30px rgba(0,0,0,.35)); }
+  .light-only { display: none; }
+  :root[data-theme="light"] .light-only { display: block; } :root[data-theme="light"] .dark-only { display: none; }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .light-only { display: block; }
+    :root:not([data-theme="dark"]) .dark-only { display: none; }
+  }
+  .swatches { display: flex; gap: 8px; margin-top: 8px; }
+  .swatches i { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--edge); }
+  .kao { font: 15px var(--sans); color: var(--ink); opacity: .9; margin-top: 6px; white-space: nowrap; }
+
+  /* ---- keys */
+  .keyrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .keycard { padding: 18px; text-align: center; border-radius: 18px; }
+  .keycard kbd { display: inline-block; padding: 7px 12px; border-radius: 9px; font-size: 14px; font-weight: 600; color: var(--ink);
+                 background: var(--glass-2); border: 1px solid var(--edge); box-shadow: 0 3px 0 color-mix(in srgb, var(--ink) 16%, transparent); }
+  .keycard p { margin: 12px 0 0; color: var(--muted); font-size: 14.5px; }
+
+  /* ---- compare */
+  .cmp { padding: 6px 22px; }
+  .cmp div { display: grid; grid-template-columns: 1fr 96px 96px; align-items: center; padding: 12px 0; font-size: 15px; }
+  .cmp div + div { border-top: 1px solid var(--edge); }
+  .cmp .head { font: 700 12.5px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .07em; }
+  .cmp span { text-align: center; }
+  .y { color: var(--accent); font-weight: 800; } .n { color: var(--dim); }
+
+  /* ---- install */
+  .distros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .distros button { padding: 9px 16px; border-radius: 999px; border: 1px solid var(--edge); background: var(--glass-2); color: var(--muted); font: 600 14.5px var(--sans); cursor: pointer; }
+  .distros button[aria-selected="true"] { color: #fff; background: var(--strong); border-color: var(--strong); }
+  .pane { padding: 26px; display: none; }
+  .pane.on { display: block; }
+  .pane ol { margin: 0 0 18px; padding-left: 20px; color: var(--muted); }
+  .pane li + li { margin-top: 6px; }
+  .pane b { color: var(--ink); }
+  .term { border-radius: 14px; border: 1px solid var(--edge); background: color-mix(in srgb, #05070c 72%, transparent); overflow: hidden; margin-top: 14px; }
+  :root[data-theme="light"] .term { background: rgba(255,255,255,.7); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .term { background: rgba(255,255,255,.7); } }
+  .term pre { margin: 0; padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.75; color: var(--ink); }
+  .term .p { color: var(--accent); user-select: none; } .term .c { color: var(--dim); }
+  .term .bar { display: flex; justify-content: flex-end; padding: 8px 10px 0; }
+  .copy { background: var(--glass-2); border: 1px solid var(--edge); color: var(--muted); border-radius: 8px; padding: 3px 10px; font: 12.5px var(--mono); cursor: pointer; }
+  .copy:hover { color: var(--ink); border-color: var(--accent); }
+  code.inl { background: var(--glass-2); border: 1px solid var(--edge); padding: 1px 6px; border-radius: 6px; font-size: .88em; }
+  .note { color: var(--muted); font-size: 15px; margin: 18px 0 0; }
+
+  /* ---- faq */
+  .faq { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+  details { padding: 0 20px; border-radius: 18px; }
+  summary { cursor: pointer; padding: 17px 0; font-weight: 650; font-size: 16px; list-style: none; display: flex; justify-content: space-between; gap: 14px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--accent); font: 600 20px var(--mono); line-height: 1.1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 18px; color: var(--muted); font-size: 15.5px; }
+
+  .end { text-align: center; padding: 90px 0 0; }
+  .end .glass { padding: 44px 24px; }
+  .end p { color: var(--muted); max-width: 520px; margin: 12px auto 24px; }
+  footer { padding: 44px 0 50px; color: var(--dim); font-size: 13.5px; text-align: center; }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 900px) {
+    .stage { grid-template-columns: 1fr; }
+    .picker { height: 440px; }
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .tile, .tile.w3, .tile.w4 { grid-column: span 1; }
+    .tile.shot { grid-column: span 2; }
+    .keyrow { grid-template-columns: repeat(2, 1fr); }
+    .faq { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    header.nav a.l:not(.gh) { display: none; }
+    .hero { padding-top: 48px; }
+    .bento { grid-template-columns: 1fr; }
+    .tile.shot { grid-column: span 1; flex-direction: column; align-items: flex-start; }
+    .tile.shot img { margin: 10px auto -60px; }
+    .cmp div { grid-template-columns: 1fr 62px 70px; font-size: 14px; }
+    section { padding-top: 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .caret { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="sky" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<header class="nav">
+  <div class="glass">
+    <a class="brand" href="./" aria-label="SuperDot home"><img src="icon.svg" alt="" width="26" height="26">SuperDot</a>
+    <a class="l" href="#try">Try it</a>
+    <a class="l" href="#features">Features</a>
+    <a class="l" href="#install">Install</a>
+    <a class="l" href="#faq">FAQ</a>
+    <a class="l gh" href="https://github.com/saikatnjm/superdot">GitHub ↗</a>
+    <button class="round" id="theme" title="Light / dark" aria-label="Switch between light and dark">◐</button>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <section class="hero" aria-labelledby="title" style="padding-top:74px">
+    <span class="chip">Emoji for Linux · free and open source</span>
+    <h1 id="title">Every emoji, one <span class="keys"><kbd>Super</kbd><kbd>.</kbd></span> away</h1>
+    <p class="lead"><b>Missing the Windows emoji panel on Linux?</b> SuperDot brings Win+. to Ubuntu, Mint, Debian, Fedora, Arch and more. Press the shortcut in any app, type to search, and the emoji is typed right where you were writing.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/saikatnjm/superdot/releases/latest/download/superdot_amd64.deb">Download for Ubuntu / Mint (.deb)</a>
+      <a class="btn ghost" href="#install">Fedora, Arch and others</a>
+    </div>
+    <p class="meta">Version 1.0.0 · Wayland and X11 · GNOME, KDE Plasma, Cinnamon, MATE, Xfce · MIT license</p>
+
+    <div class="stage" id="try">
+      <div class="glass compose">
+        <div class="who"><span class="avatar">🧑‍💻</span><span><b>Try it here.</b> This is a working copy of the panel.</span></div>
+        <div class="bubble">Did the release go out? <span style="font-family:var(--emoji)">👀</span></div>
+        <div class="field" id="field" aria-live="polite"><span id="typed">Shipped it </span><span class="caret"></span></div>
+        <div class="under">
+          <span>Click an emoji, or search “party”, “cat”, “shrug”, “arrow”.</span>
+          <button class="linkbtn" id="clear">Clear</button>
+        </div>
+        <div class="under">
+          <span>Six palettes. The glass takes the tint:</span>
+          <span class="dots" id="dots" role="group" aria-label="Colour palette"></span>
+        </div>
+      </div>
+
+      <div class="glass picker" role="application" aria-label="SuperDot demo">
+        <div class="tabs" role="tablist">
+          <button role="tab" data-tab="e" aria-selected="true">Emoji</button>
+          <button role="tab" data-tab="k" aria-selected="false">Kaomoji</button>
+          <button role="tab" data-tab="s" aria-selected="false">Symbols</button>
+          <span aria-hidden="true">✋ ⚙️</span>
+        </div>
+        <input class="search" id="q" type="search" placeholder="Search emoji" autocomplete="off" aria-label="Search">
+        <div class="grid-box" id="grid"></div>
+        <div class="status" id="status">&nbsp;</div>
+      </div>
+    </div>
+
+    <ul class="facts" aria-label="SuperDot at a glance">
+      <li><b>1,900+</b> emoji · Unicode 18.0</li>
+      <li><b>140</b> kaomoji</li>
+      <li><b>740</b> symbols</li>
+      <li><b>80 KB</b> download</li>
+      <li><b>~14 MB</b> of memory</li>
+      <li><b>0</b> network connections</li>
+    </ul>
+  </section>
+
+  <section id="features" aria-labelledby="features-h">
+    <p class="eyebrow">Features</p>
+    <h2 id="features-h">Built to get out of your way</h2>
+    <p class="sub">Open it, pick, keep typing. Everything else is there to make that feel instant.</p>
+    <div class="bento">
+      <article class="glass tile w4 shot">
+        <div>
+          <div class="big">⌨️</div>
+          <h3>Typed where you were writing</h3>
+          <p>Browser, editor, chat, office app or terminal: the emoji lands at your cursor. No copy, no paste, no switching windows.</p>
+        </div>
+        <img class="dark-only" src="screenshot-dark.png" width="400" height="480" loading="lazy" alt="The SuperDot panel in dark mode with recently used emoji and the Smileys category">
+        <img class="light-only" src="screenshot-light.png" width="400" height="480" loading="lazy" alt="The SuperDot panel in light mode">
+      </article>
+      <article class="glass tile">
+        <div class="big">🔎</div>
+        <h3>One search for everything</h3>
+        <p>Type “heart” and get the emoji, the kaomoji and the symbols together, best match first.</p>
+      </article>
+      <article class="glass tile">
+        <div class="big">✨</div>
+        <h3>Pick several in a row</h3>
+        <p>The panel stays on screen while each emoji is typed, with no flicker. <kbd class="inl">Esc</kbd> closes it.</p>
+      </article>
+      <article class="glass tile">
+        <div class="big">📋</div>
+        <h3>Your clipboard stays yours</h3>
+        <p>What you had copied is put back afterwards, and the emoji never shows up in clipboard history.</p>
+      </article>
+      <article class="glass tile">
+        <div class="big">👋🏽</div>
+        <h3>Skin tones and recents</h3>
+        <p>Choose a skin tone once. The emoji you use most are waiting at the top.</p>
+      </article>
+      <article class="glass tile w3">
+        <div class="big">🎨</div>
+        <h3>Glass, in your colour</h3>
+        <p>A see-through glass panel in six palettes, light or dark. KDE Plasma also blurs what is behind it.</p>
+        <div class="swatches" aria-hidden="true"><i style="background:#2563eb"></i><i style="background:#475569"></i><i style="background:#0f8a5f"></i><i style="background:#b45309"></i><i style="background:#c2416b"></i><i style="background:#6d3fd4"></i></div>
+      </article>
+      <article class="glass tile w3">
+        <div class="big">¯\_(ツ)_/¯</div>
+        <h3>Kaomoji and symbols too</h3>
+        <p>Shrugs and table flips, plus arrows, currency, math, Greek and accented letters.</p>
+        <div class="kao" aria-hidden="true">(╯°□°)╯︵ ┻━┻ &nbsp; ʕ•ᴥ•ʔ &nbsp; → € ± Ω é ✓</div>
+      </article>
+      <article class="glass tile">
+        <div class="big">🪶</div>
+        <h3>Light on your machine</h3>
+        <p>One small C program. No Electron, no background polling, nothing to download at runtime.</p>
+      </article>
+      <article class="glass tile">
+        <div class="big">🖥️</div>
+        <h3>Wayland and X11</h3>
+        <p>GNOME, KDE Plasma, Cinnamon, MATE and Xfce. The shortcut is set up for you.</p>
+      </article>
+      <article class="glass tile">
+        <div class="big">🔒</div>
+        <h3>Private</h3>
+        <p>The emoji list is built in. SuperDot never connects to the internet, and passwords on your clipboard are left alone.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="keys-h">
+    <p class="eyebrow">Keyboard</p>
+    <h2 id="keys-h">Hands stay on the keys</h2>
+    <p class="sub">The same keys as on Windows, so there is nothing to learn.</p>
+    <div class="keyrow">
+      <div class="glass keycard"><kbd>Super</kbd> + <kbd>.</kbd><p>Open or close</p></div>
+      <div class="glass keycard"><kbd>a</kbd> <kbd>b</kbd> <kbd>c</kbd><p>Just type to search</p></div>
+      <div class="glass keycard"><kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd><p>Move around</p></div>
+      <div class="glass keycard"><kbd>Enter</kbd><p>Insert it</p></div>
+      <div class="glass keycard"><kbd>Shift</kbd> + <kbd>Enter</kbd><p>Insert and close</p></div>
+      <div class="glass keycard"><kbd>Tab</kbd><p>Emoji → Kaomoji → Symbols</p></div>
+      <div class="glass keycard"><kbd>Esc</kbd><p>Clear the search, then close</p></div>
+      <div class="glass keycard"><kbd>drag</kbd><p>Edges resize, top row moves</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="cmp-h">
+    <p class="eyebrow">Coming from Windows?</p>
+    <h2 id="cmp-h">Win+. and SuperDot, side by side</h2>
+    <p class="sub">The habits carry over, with a few extras.</p>
+    <div class="glass cmp" role="table" aria-label="Windows emoji panel compared with SuperDot">
+      <div class="head" role="row"><span role="columnheader" style="text-align:left">Feature</span><span role="columnheader">Windows</span><span role="columnheader">SuperDot</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Emoji panel on Win / Super + .</b><span class="y" role="cell">✓</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Typed into the app you are using</b><span class="y" role="cell">✓</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Search, recents and skin tones</b><span class="y" role="cell">✓</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Kaomoji and symbols</b><span class="y" role="cell">✓</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Pick several in a row</b><span class="y" role="cell">✓</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">One search across emoji, kaomoji and symbols</b><span class="n" role="cell">✗</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Resize the panel, choose its colour</b><span class="n" role="cell">✗</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Choose your own shortcut</b><span class="n" role="cell">✗</span><span class="y" role="cell">✓</span></div>
+      <div role="row"><b role="rowheader" style="font-weight:500">Free and open source</b><span class="n" role="cell">✗</span><span class="y" role="cell">✓</span></div>
+    </div>
+  </section>
+
+  <section id="install" aria-labelledby="install-h">
+    <p class="eyebrow">Install</p>
+    <h2 id="install-h">Pick your Linux</h2>
+    <p class="sub">After installing a package, log out and back in once, or open SuperDot from your app menu. <kbd class="inl">Super</kbd>+<kbd class="inl">.</kbd> is set up the first time it runs.</p>
+    <div class="distros" role="tablist" aria-label="Linux distribution">
+      <button role="tab" data-pane="deb" aria-selected="true">Ubuntu · Mint · Debian</button>
+      <button role="tab" data-pane="rpm" aria-selected="false">Fedora · openSUSE</button>
+      <button role="tab" data-pane="arch" aria-selected="false">Arch · Manjaro</button>
+      <button role="tab" data-pane="src" aria-selected="false">Any other</button>
+    </div>
+    <div class="glass pane on" id="deb">
+      <ol>
+        <li>Download <a href="https://github.com/saikatnjm/superdot/releases/latest/download/superdot_amd64.deb">superdot_amd64.deb</a> (also for Pop!_OS, Zorin and elementary).</li>
+        <li>Double-click it and choose <b>Install</b>, or use the terminal:</li>
+      </ol>
+      <a class="btn primary" href="https://github.com/saikatnjm/superdot/releases/latest/download/superdot_amd64.deb">Download .deb</a>
+      <div class="term"><div class="bar"><button class="copy" data-copy="sudo apt install ./superdot_amd64.deb">copy</button></div>
+<pre><span class="p">$ </span>sudo apt install ./superdot_amd64.deb</pre></div>
+    </div>
+    <div class="glass pane" id="rpm">
+      <ol>
+        <li>Download <a href="https://github.com/saikatnjm/superdot/releases/latest/download/superdot.x86_64.rpm">superdot.x86_64.rpm</a>.</li>
+        <li>Open it with <b>Software</b>, or use the terminal:</li>
+      </ol>
+      <a class="btn primary" href="https://github.com/saikatnjm/superdot/releases/latest/download/superdot.x86_64.rpm">Download .rpm</a>
+      <div class="term"><div class="bar"><button class="copy" data-copy="sudo dnf install ./superdot.x86_64.rpm">copy</button></div>
+<pre><span class="p">$ </span>sudo dnf install ./superdot.x86_64.rpm
+<span class="c"># openSUSE:</span>
+<span class="p">$ </span>sudo zypper install ./superdot.x86_64.rpm</pre></div>
+    </div>
+    <div class="glass pane" id="arch">
+      <ol>
+        <li>Build it with the included <code class="inl">PKGBUILD</code>, or download the <a href="https://github.com/saikatnjm/superdot/releases/latest/download/superdot-x86_64.pkg.tar.zst">ready-built package</a> and run <code class="inl">sudo pacman -U superdot-x86_64.pkg.tar.zst</code>.</li>
+      </ol>
+      <div class="term"><div class="bar"><button class="copy" data-copy="git clone https://github.com/saikatnjm/superdot.git&#10;cd superdot/packaging/arch&#10;makepkg -si">copy</button></div>
+<pre><span class="p">$ </span>git clone https://github.com/saikatnjm/superdot.git
+<span class="p">$ </span>cd superdot/packaging/arch
+<span class="p">$ </span>makepkg -si</pre></div>
+    </div>
+    <div class="glass pane" id="src">
+      <ol>
+        <li>The installer puts everything in your home folder and fetches build tools with apt, dnf, pacman or zypper if needed.</li>
+        <li>It asks for your password once, so SuperDot can type into Wayland apps.</li>
+      </ol>
+      <div class="term"><div class="bar"><button class="copy" data-copy="git clone https://github.com/saikatnjm/superdot.git&#10;cd superdot&#10;./install.sh">copy</button></div>
+<pre><span class="p">$ </span>git clone https://github.com/saikatnjm/superdot.git
+<span class="p">$ </span>cd superdot
+<span class="p">$ </span>./install.sh
+<span class="c"># or with your own shortcut:</span>
+<span class="p">$ </span>./install.sh --hotkey "&lt;Ctrl&gt;&lt;Alt&gt;e"</pre></div>
+    </div>
+    <p class="note">Something not working? Run <code class="inl">superdot --doctor</code> to check the setup on your machine.</p>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-h">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq-h">Questions people ask</h2>
+    <p class="sub"></p>
+    <div class="faq">
+      <details class="glass" open><summary>How do I get the Windows emoji panel on Ubuntu?</summary>
+        <p>Install the .deb, then log out and back in once (or open SuperDot from your app menu). From then on, press <kbd class="inl">Super</kbd>+<kbd class="inl">.</kbd> in any app, type to search, and click an emoji.</p></details>
+      <details class="glass"><summary>Does it work on Wayland?</summary>
+        <p>Yes. GNOME's Wayland session on Ubuntu and Fedora is supported, including typing into native Wayland apps. The installer adds a one-line permission so SuperDot can press the paste keys for you.</p></details>
+      <details class="glass"><summary>Does picking an emoji overwrite my clipboard?</summary>
+        <p>No. SuperDot remembers what you had copied, borrows the clipboard for a moment to type the emoji, then puts your content back. The emoji is also kept out of clipboard history tools.</p></details>
+      <details class="glass"><summary>Some emoji are missing. Why?</summary>
+        <p>SuperDot only shows emoji your installed font can draw, so you never see empty boxes. Update the Noto Color Emoji font to get the newest ones.</p></details>
+      <details class="glass"><summary>Can I change the shortcut?</summary>
+        <p>Yes. Open the panel, click ⚙, click <b>Shortcut</b> and press a combination that uses <kbd class="inl">Super</kbd> or <kbd class="inl">Ctrl+Alt</kbd>.</p></details>
+      <details class="glass"><summary>Does it work on KDE Plasma, Sway or Hyprland?</summary>
+        <p>On KDE Plasma the shortcut is set up for you, and Plasma's own emoji picker gets Meta+. back if you uninstall. On Sway, Hyprland, i3 and COSMIC, SuperDot prints the one line to add to your config.</p></details>
+      <details class="glass"><summary>Does SuperDot use the internet?</summary>
+        <p>No. The emoji list is built into the program. There is no telemetry, no analytics and no update check.</p></details>
+      <details class="glass"><summary>How do I uninstall it?</summary>
+        <p>Run <code class="inl">sudo apt remove superdot</code>, <code class="inl">sudo dnf remove superdot</code> or <code class="inl">sudo pacman -R superdot</code>. If you used the script: <code class="inl">~/.local/lib/superdot/uninstall.sh</code>. Your desktop shortcuts are put back.</p></details>
+    </div>
+  </section>
+
+  <section class="end" aria-labelledby="end-h">
+    <div class="glass">
+      <h2 id="end-h">Like SuperDot? <span style="font-family:var(--emoji)">⭐</span></h2>
+      <p>If it saves you a web search every time you need an emoji, a star on GitHub helps other Linux users find it.</p>
+      <a class="btn primary" href="https://github.com/saikatnjm/superdot">Star on GitHub</a>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <p>SuperDot · free and open source (MIT) · <a href="https://github.com/saikatnjm/superdot">GitHub</a> · <a href="https://github.com/saikatnjm/superdot/issues">Report an issue</a></p>
+  <p>Windows is a trademark of Microsoft. SuperDot is not affiliated with Microsoft. Emoji data © Unicode, Inc.</p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement, $ = function (id) { return document.getElementById(id); };
+
+  /* theme */
+  try { var t = localStorage.getItem("superdot-theme"); if (t) root.setAttribute("data-theme", t); } catch (e) {}
+  $("theme").addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    var next = cur === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("superdot-theme", next); } catch (e) {}
+  });
+
+  /* palettes: the same six as the app */
+  var PALS = [["Azure", "#7cb4ff", "#2563eb"], ["Graphite", "#b9c2d0", "#475569"], ["Emerald", "#62d6a8", "#0f8a5f"],
+              ["Amber", "#f3c26d", "#b45309"], ["Rose", "#f4a3b8", "#c2416b"], ["Violet", "#b9a4ff", "#6d3fd4"]];
+  PALS.forEach(function (p, i) {
+    var b = document.createElement("button");
+    b.style.background = p[2]; b.title = p[0]; b.setAttribute("aria-label", p[0]); b.setAttribute("aria-pressed", i === 0);
+    b.addEventListener("click", function () {
+      root.style.setProperty("--accent", p[1]); root.style.setProperty("--strong", p[2]);
+      [].forEach.call($("dots").children, function (c) { c.setAttribute("aria-pressed", c === b); });
+    });
+    $("dots").appendChild(b);
+  });
+
+  /* a small sample of what the app carries */
+  var DATA = {
+    e: [["Recently used", "😂 tears joy laugh|❤️ red heart love|👍 thumbs up yes|🎉 party popper celebrate|🔥 fire hot|✨ sparkles|🙏 folded hands thanks please|🚀 rocket ship launch"],
+        ["Smileys & emotion", "😀 grinning face happy|😄 smile|😁 beaming grin|😅 sweat smile|🤣 rolling floor laughing|🙂 slightly smiling|😉 wink|😊 blush smile|😍 heart eyes love|😘 kiss|😎 cool sunglasses|🤔 thinking|😴 sleeping|😭 crying sob|😡 angry|🥳 party face celebrate|🤯 mind blown|🥺 pleading|😱 scream shock|🤗 hug|🙃 upside down|😬 grimace|🤩 star struck|😇 angel halo"],
+        ["People", "👋 waving hand hello bye|👏 clap|🙌 raising hands|🤝 handshake|💪 muscle strong|👀 eyes look|🤷 shrug person|🙋 raising hand|🧑‍💻 technologist developer|🫶 heart hands love"],
+        ["Animals & nature", "🐱 cat face|🐈 cat|🐶 dog|🦊 fox|🐼 panda|🐧 penguin linux|🦄 unicorn|🐝 bee|🌸 blossom flower|🌈 rainbow|🌙 moon|⭐ star"],
+        ["Food & drink", "☕ coffee|🍕 pizza|🍔 burger|🍰 cake|🍎 apple|🍺 beer|🍜 noodles ramen|🍫 chocolate"],
+        ["Objects & symbols", "💡 idea light bulb|📌 pin|📎 paperclip|🔒 lock|🎧 headphones|💻 laptop computer|✅ check done|❌ cross no|⚠️ warning|💯 hundred|➡️ arrow right|⬆️ arrow up|💙 blue heart|💜 purple heart|💚 green heart|🧡 orange heart|🏁 flag finish"]],
+    k: [["Classic", ":-) smile|;-) wink|:-D grin|:-( sad|<3 heart love|^_^ happy|T_T cry|o_O confused"],
+        ["Shrug & flip", "¯\\_(ツ)_/¯ shrug|┐(￣ヘ￣)┌ shrug|(╯°□°)╯︵ ┻━┻ table flip rage|┬─┬ノ( º _ ºノ) put back calm"],
+        ["Happy & love", "(◕‿◕) smile|＼(^o^)／ cheer yay party|(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ sparkle party|(｡♥‿♥｡) heart love|(づ｡◕‿‿◕｡)づ hug"],
+        ["Animals", "ʕ•ᴥ•ʔ bear|(=^･ω･^=) cat|U・ᴥ・U dog|>°))))彡 fish"],
+        ["Actions", "(⌐■_■) cool sunglasses|ᕦ(ò_óˇ)ᕤ strong flex|(｀・ω・´)ゞ salute|(－_－) zzZ sleep"]],
+    s: [["Arrows", "→ arrow right|← arrow left|↑ arrow up|↓ arrow down|↔ arrow both|⇒ double arrow right|↩ arrow return|➜ arrow"],
+        ["Currency", "€ euro|£ pound|¥ yen|₹ rupee|৳ taka|₿ bitcoin|¢ cent|₩ won"],
+        ["Math", "± plus minus|× times multiply|÷ divide|≠ not equal|≈ almost equal|≤ less equal|≥ greater equal|∞ infinity|√ root|π pi|∑ sum|°  degree"],
+        ["Letters", "é e acute|ñ n tilde|ü u umlaut|ç c cedilla|ß sharp s|Ω omega|α alpha|β beta|λ lambda|µ micro"],
+        ["Other", "✓ check mark|✗ cross|★ star|♥ heart|♪ music note|© copyright|® registered|™ trademark|§ section|… ellipsis|— em dash|• bullet"]]
+  };
+  var NAMES = { e: "emoji", k: "kaomoji", s: "symbols" }, tab = "e", grid = $("grid"), q = $("q"), status = $("status"), typed = $("typed");
+
+  function items(t) {
+    var out = [];
+    DATA[t].forEach(function (sec) {
+      sec[1].split("|").forEach(function (it) {
+        var sp = it.indexOf(" ");
+        if (t === "k") { var m = it.match(/^(.*?) ([a-z ]+)$/); out.push({ t: t, sec: sec[0], ch: m[1], name: m[2] }); }
+        else out.push({ t: t, sec: sec[0], ch: it.slice(0, sp), name: it.slice(sp + 1).trim() });
+      });
+    });
+    return out;
+  }
+  var ALL = { e: items("e"), k: items("k"), s: items("s") };
+
+  function cell(it) {
+    var b = document.createElement("button");
+    b.textContent = it.ch; b.title = it.name; b.setAttribute("aria-label", it.name);
+    b.addEventListener("mouseenter", function () { show(it); });
+    b.addEventListener("focus", function () { show(it); });
+    b.addEventListener("click", function () { insert(it); });
+    return b;
+  }
+  function show(it) { status.innerHTML = ""; var e = document.createElement("span"); e.className = it.t === "e" ? "e" : ""; e.style.marginRight = "8px"; e.textContent = it.ch;
+                      status.appendChild(e); status.appendChild(document.createTextNode(it.name.charAt(0).toUpperCase() + it.name.slice(1))); }
+  function insert(it) { var s = document.createElement("span"); if (it.t === "e") s.className = "e"; s.textContent = it.ch + (it.t === "e" ? "" : " "); typed.appendChild(s); }
+  function block(title, list, t) {
+    var h = document.createElement("div"); h.className = "sec"; h.textContent = title; grid.appendChild(h);
+    var c = document.createElement("div"); c.className = "cells" + (t === "k" ? " wide" : t === "s" ? " sym" : "");
+    list.forEach(function (it) { c.appendChild(cell(it)); }); grid.appendChild(c);
+  }
+  var first = null;
+  function render() {
+    grid.innerHTML = ""; first = null;
+    var words = q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!words.length) {
+      DATA[tab].forEach(function (sec) { block(sec[0], ALL[tab].filter(function (it) { return it.sec === sec[0]; }), tab); });
+    } else {   /* like the app: every tab, the one you are on first */
+      [tab].concat(["e", "k", "s"].filter(function (t) { return t !== tab; })).forEach(function (t) {
+        var seen = {}, hits = ALL[t].filter(function (it) {
+          if (seen[it.ch]) return false;
+          var ok = words.every(function (w) { return it.name.split(" ").some(function (n) { return n.indexOf(w) === 0; }); });
+          if (ok) seen[it.ch] = 1;
+          return ok;
+        });
+        if (hits.length) { if (!first) first = hits[0]; block(NAMES[t].charAt(0).toUpperCase() + NAMES[t].slice(1), hits, t); }
+      });
+      if (!first) { var n = document.createElement("div"); n.className = "none"; n.textContent = "Nothing found for “" + q.value + "”"; grid.appendChild(n); }
+    }
+    var b = grid.querySelector("button"); if (b) { b.classList.add("sel"); if (!first && !words.length) first = ALL[tab][0]; }
+    if (first) show(first); else status.innerHTML = "&nbsp;";
+    grid.scrollTop = 0;
+  }
+  [].forEach.call(document.querySelectorAll(".tabs button"), function (b) {
+    b.addEventListener("click", function () {
+      tab = b.getAttribute("data-tab");
+      [].forEach.call(document.querySelectorAll(".tabs button"), function (x) { x.setAttribute("aria-selected", x === b); });
+      q.placeholder = "Search " + NAMES[tab]; render();
+    });
+  });
+  q.addEventListener("input", render);
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && first) { insert(first); e.preventDefault(); }
+    if (e.key === "Escape") { q.value = ""; render(); }
+  });
+  $("clear").addEventListener("click", function () { typed.textContent = "Shipped it "; });
+  render();
+
+  /* install tabs + copy buttons */
+  [].forEach.call(document.querySelectorAll(".distros button"), function (b) {
+    b.addEventListener("click", function () {
+      [].forEach.call(document.querySelectorAll(".distros button"), function (x) { x.setAttribute("aria-selected", x === b); });
+      [].forEach.call(document.querySelectorAll(".pane"), function (p) { p.classList.toggle("on", p.id === b.getAttribute("data-pane")); });
+    });
+  });
+  [].forEach.call(document.querySelectorAll(".copy"), function (b) {
+    b.addEventListener("click", function () {
+      navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function () {
+        b.textContent = "copied ✓"; setTimeout(function () { b.textContent = "copy"; }, 1500);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

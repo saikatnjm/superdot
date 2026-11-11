@@ -1,0 +1,30 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of `superdot --doctor`
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: Which app were you typing into?
+      placeholder: e.g. Firefox, VS Code, GNOME Terminal, LibreOffice
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install SuperDot?
+      options: [".deb package", ".rpm package", "Arch package / AUR", "install.sh", "built from source"]
+    validations:
+      required: true

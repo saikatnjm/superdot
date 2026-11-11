@@ -1,0 +1,25 @@
+# Maintainer: saikatnjm <saikatnjm at users dot noreply dot github dot com>
+# Arch Linux / Manjaro / EndeavourOS package, can be published on the AUR as "superdot".
+# Build and install from this folder:  makepkg -si
+pkgname=superdot
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Emoji for Linux: press Super+. to pick an emoji, kaomoji or symbol, like Win+. on Windows"
+arch=('x86_64' 'aarch64')
+url="https://github.com/saikatnjm/superdot"
+license=('MIT' 'Unicode-3.0')
+depends=('gtk3' 'libx11' 'python' 'python-gobject' 'noto-fonts-emoji')
+optdepends=('libxtst: type into X11 apps without /dev/uinput')
+install=superdot.install
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "$pkgname-$pkgver"
+    make CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" PREFIX=/usr
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    make install DESTDIR="$pkgdir" PREFIX=/usr
+}

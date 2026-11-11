@@ -1,0 +1,2 @@
+# SuperDot types the emoji for you: let the logged-in user create a virtual keyboard (/dev/uinput)
+KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
