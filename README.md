@@ -23,6 +23,9 @@ Ubuntu, Linux Mint, Debian, Fedora, Arch, openSUSE and more.
 
 </div>
 
+> [!IMPORTANT]
+> **SuperDot is now part of [SuperV](https://github.com/saikatnjm/superv).** Since SuperV 2.0 the emoji panel (Super+.) is built in, next to the Win+V clipboard history, and can be turned off in its settings. Installing SuperV 2 replaces SuperDot and keeps your settings and recently used emoji. New versions come out there; SuperDot 1.0.0 stays downloadable on SuperV's [versions page](https://saikatnjm.github.io/superv/versions.html#superdot-1.0.0).
+
 ## Why SuperDot
 
 Typing an emoji on Linux usually means a web search and copy-paste, or remembering Unicode codes. SuperDot copies how Windows does it:
